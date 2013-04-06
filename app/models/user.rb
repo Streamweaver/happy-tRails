@@ -11,6 +11,8 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name
 
+  before_save { |user| user.email = email.downcase}
+
   validates :name, presence: true, length: { maximum: 50 }
 
   EMAIL_REGEX = /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
