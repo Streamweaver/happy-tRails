@@ -19,6 +19,7 @@
 
         <%= render 'layouts/ie7_warn' %>
         <%= render 'layouts/header' %>
+        <%= render 'layouts/flash_msg' %>'
 
         <div class="container">
 
@@ -28,7 +29,7 @@
             <hr>
 
             <%= render 'layouts/footer' %>
-
+            <%= debug(params) if Rails.env.development? %>
         </div> <!-- /container -->
 
     </body>
