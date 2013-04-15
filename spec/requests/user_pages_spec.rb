@@ -7,8 +7,8 @@ describe "UserPages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_selector('h1', text: "Sign up")}
-    it { should have_selector('title', text: ' | Sign up')}
+    it { should have_selector('h1', text: "Sign up") }
+    it { should have_selector('title', text: ' | Sign up') }
   end
 
   describe "signup" do
@@ -24,10 +24,10 @@ describe "UserPages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name", with: "Test User"
-        fill_in "Email", with: "test@email.com"
+        fill_in "Name", with: "Example User"
+        fill_in "Email", with: "user@example.com"
         fill_in "Password", with: "foobar"
-        fill_in "Confirmation", with:"foobar"
+        fill_in "Confirmation", with: "foobar"
       end
 
       it "should create a user" do
@@ -36,7 +36,8 @@ describe "UserPages" do
 
       describe "after saving the user" do
         before { click_button submit }
-        let(:user) { User.find_by_email('test@email.com') }
+
+        let(:user) { User.find_by_email('user@example.com') }
 
         it { should have_selector('title', text: user.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome!') }
@@ -48,11 +49,11 @@ describe "UserPages" do
   end
 
   describe "Profile Page" do
-    let(:user) { FactoryGirl.create(:user)}
-    before {visit user_path(user)}
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit user_path(user) }
 
-    it { should have_selector('h1', text: user.name)}
-    it { should have_selector('title', text: user.name)}
+    it { should have_selector('h1', text: user.name) }
+    it { should have_selector('title', text: user.name) }
   end
 
 end
